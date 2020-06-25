@@ -1,25 +1,79 @@
 body {
   margin: 0;
-  font-family: "Prompt", sans-serif;
+  font-family: "Prompt", sans-serif; // required
+  background-image: url("./assets/images/bg.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: auto 100%;
+  background-attachment: fixed;
+  background-color: #ffffff;
+  overflow: hidden;
 }
 
 html,
 body,
 #root {
-  height: 100%;
+  min-height: 100%;
 }
 
-.app {
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+#logo {
+  display: block;
+  margin: 10px auto 0px auto;
+  height: 5vh;
 }
 
 .container {
-  width: 90%;
-  height: 90vh;
-  background-color: white;
-  border-radius: 20px;
-  margin-top: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  clear: left;
+  width: 136vh;
+  height: 90vh; // required
+  background-color: #ffffff; // required
+  border-radius: 20px; // required
+  margin-top: 20px;
+}
+
+.title {
+  font-size: 37px; // required
+  color: #383838; // required
+  font-weight: bold;
+}
+
+.text-center {
+  padding-top: 40px;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+.input {
+  width: 45%;
+  height: 60px; // required
+  color: #4e4e4e; // required
+  border: 3px solid lightgray; // required
+  border-radius: 10px; // required
+  font-size: 34px; // required
+  text-align: center;
+  resize: vertical;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.myDiv {
+  border: 5px outset red;
+  background-color: lightblue;
+  text-align: center;
+}
+
+@media only screen and (max-width: 767px) {
+  .container {
+    /* The file size of this background image is 93% smaller
+     * to improve page load speed on mobile internet connections */
+    width: 90%;
+  }
+
+  .input {
+    width: 80%;
+  }
 }
