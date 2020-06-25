@@ -45,6 +45,77 @@ body,
   padding-top: 120px;
 }
 
+.room-title {
+  position: relative;
+  animation-name: button;
+  animation-duration: 0.5s;
+}
+
+.container-chat {
+  margin: 20px;
+}
+
+.container-chat > .chat {
+  height: 83vh;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #edeae5;
+  border-radius: 20px;
+  position: relative;
+  animation-name: box;
+  animation-duration: 0.5s;
+}
+
+.box {
+  font-size: 19px;
+  padding: 10px;
+}
+
+.message-box {
+  display: inline-block;
+  margin: 10px;
+  padding: 10px;
+  background-color: lightgray;
+  border-radius: 8px;
+}
+
+.wrapper {
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  bottom: 0vh;
+}
+
+.input-chat {
+  height: 60px; // required
+  color: #4e4e4e; // required
+  border: 3px solid lightgray; // required
+  border-radius: 10px; // required
+  font-size: 34px; // required
+
+  width: 131vh;
+}
+
+.input-chat:focus {
+  outline: none;
+}
+
+.input-icons {
+  width: 100%;
+}
+
+.input-icons small {
+  position: absolute;
+}
+
+.small {
+  padding-top: 40px;
+  right: 34vh;
+  min-width: 0px;
+}
+
 .title {
   font-size: 37px; // required
   color: #383838; // required
@@ -68,12 +139,6 @@ body,
 
 .input:focus {
   outline: none;
-}
-
-.myDiv {
-  border: 5px outset red;
-  background-color: lightblue;
-  text-align: center;
 }
 
 .button-1 {
@@ -138,8 +203,16 @@ body,
     width: 90%;
   }
 
+  .container-chat > .chat {
+    height: 80vh;
+  }
+
   .input {
     width: 80%;
+  }
+
+  .input-chat {
+    width: 96%;
   }
 }
 
@@ -151,5 +224,18 @@ body,
   100% {
     opacity: 100%;
     top: 0px;
+  }
+}
+
+@keyframes box {
+  0% {
+    left: 20px;
+    top: 10px;
+    opacity: 0%;
+  }
+  100% {
+    left: 0px;
+    top: 0px;
+    opacity: 100%;
   }
 }

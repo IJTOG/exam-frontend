@@ -1,15 +1,26 @@
 import React from "react";
-import { SaveUser } from "../redux/action";
+import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
-const Join = ({ user, dispatch }) => {
+const Join = ({ user, room }) => {
+  let history = useHistory();
   const [name, setName] = React.useState("");
 
-  React.useEffect(() => {}, [user]);
+  React.useEffect(() => {
+    console.log(room);
+  }, [user, room]);
 
   const handleSubmit = () => {
-    dispatch(SaveUser(name));
+    let isroom = true;
+    room.map((rn) => {
+      if (rn.name === name) {
+        isroom = false;
+        history.push(`/room/${name}`);
+      }
+      return null;
+    });
+    if (isroom) alert("ไม่มีห้องนี้ กรอกใหม่หรือสร้างห้องก่อน");
   };
 
   const handleInput = ({ target }) => {
@@ -26,24 +37,17 @@ const Join = ({ user, dispatch }) => {
       </div>
       <div className="text-center pt-1">
         <Link to={`/options`} style={{ textDecoration: "none" }}>
-          <input
-            type="button"
-            onClick={handleSubmit}
-            className="button-2"
-            value="กลับ"
-          />
+          <input type="button" className="button-2" value="กลับ" />
         </Link>
-        <Link to={`/options`} style={{ textDecoration: "none" }}>
-          <input
-            type="button"
-            onClick={handleSubmit}
-            className="button-1"
-            value="ยืนยัน"
-          />
-        </Link>
+        <input
+          type="button"
+          onClick={handleSubmit}
+          className="button-1"
+          value="ยืนยัน"
+        />
       </div>
     </div>
   );
 };
 
-export default connect(({ user }) => ({ user }), null)(Join);
+export default connect(({ user, room }) => ({ user, room }), null)(Join);
