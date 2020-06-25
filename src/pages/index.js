@@ -1,13 +1,16 @@
 import React from "react";
-import logo from "../assets/images/logo.png";
+import { SaveUser } from "../redux/action";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
-const Chat = () => {
+const Chat = ({ user, dispatch }) => {
   const [visible, setVisible] = React.useState(false);
   const [name, setName] = React.useState("");
 
+  React.useEffect(() => {}, [user]);
+
   const handleSubmit = () => {
-    setVisible(true);
+    dispatch(SaveUser(name));
   };
 
   const handleInput = ({ target }) => {
@@ -29,7 +32,7 @@ const Chat = () => {
             <input
               type="button"
               onClick={handleSubmit}
-              class="button-1"
+              className="button-1"
               value="ยืนยัน"
             />
           </Link>
@@ -39,4 +42,4 @@ const Chat = () => {
   );
 };
 
-export default Chat;
+export default connect(({ user }) => ({ user }), null)(Chat);

@@ -1,51 +1,31 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
-const Options = () => {
-  const [visible, setVisible] = React.useState(false);
-  const [name, setName] = React.useState("");
+const Options = ({ user }) => {
+  const [name, setName] = React.useState({ username: "" });
 
   React.useEffect(() => {
-    const fetchData = async () => {};
-    fetchData();
-  }, []);
-
-  const handleSubmit = () => {
-    setVisible(true);
-  };
-
-  const handleInput = ({ target }) => {
-    setName(target.value);
-    setVisible(true);
-  };
-
-  window.onunload = () => {
-    // Clear the local storage
-    window.MyStorage.clear();
-  };
+    setName(user);
+  }, [user]);
 
   return (
     <div>
       <div className="text-center pt-2">
-        <span className="title">คุณ {{ name }}</span>
+        <span className="title">คุณ {name.username}</span>
       </div>
-      <div className="text-center pt-1">
-        <input className="input" type="text" onChange={handleInput}></input>
+      <div className="text-center pt-3">
+        <Link to={`/create`} style={{ textDecoration: "none" }}>
+          <input type="button" className="button-1" value="สร้างห้องใหม่" />
+        </Link>
       </div>
-      <div className="text-center pt-1">
-        {visible ? (
-          <Link to={`/options`} style={{ textDecoration: "none" }}>
-            <input
-              type="button"
-              onClick={handleSubmit}
-              class="button-1"
-              value="ยืนยัน"
-            />
-          </Link>
-        ) : null}
+      <div className="text-center">
+        <Link to={`/join`} style={{ textDecoration: "none" }}>
+          <input type="button" className="button-2" value="เข้าร่วมแชท" />
+        </Link>
       </div>
     </div>
   );
 };
 
-export default Options;
+export default connect(({ user }) => ({ user }), null)(Options);

@@ -41,6 +41,10 @@ body,
   padding-top: 80px;
 }
 
+.pt-3 {
+  padding-top: 120px;
+}
+
 .title {
   font-size: 37px; // required
   color: #383838; // required
@@ -80,10 +84,10 @@ body,
     #b31315 100%
   ); // required
   font-family: "Prompt", sans-serif;
-  padding: 16px 35px;
+  padding: 16px 40px;
   border: none;
   border-radius: 8px;
-  font-size: 23px;
+  font-size: 30px;
   text-decoration: none;
 
   cursor: pointer;
@@ -93,11 +97,37 @@ body,
   transform: scale(1);
   position: relative;
   animation-name: button;
-  animation-duration: 0.4s;
+  animation-duration: 0.3s;
+  z-index: 1;
+}
+
+.button-2 {
+  color: #6f6f6f; // required
+  background-color: #ffffff; // required
+  font-family: "Prompt", sans-serif;
+  padding: 16px 35px;
+  border: none;
+  border-radius: 8px;
+  font-size: 30px;
+  text-decoration: none;
+
+  cursor: pointer;
+  margin: 0px 3px 0px 3px;
+  transition: all 0.4s ease;
+  transform: translateY(-20px);
+  transform: scale(1);
+  position: relative;
+  animation-name: button;
+  animation-duration: 0.6s;
+}
+
+.button-2:hover {
+  transform: scale(1.05) perspective(1px);
+  color: #c41417;
 }
 
 .button-1:hover {
-  transform: scale(1.1) perspective(1px);
+  transform: scale(1.08) perspective(1px);
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
 }
 
