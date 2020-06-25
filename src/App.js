@@ -1,17 +1,27 @@
 import React from "react";
+import { Route, Switch, BrowserRouter } from "react-router-dom";
+import appRoutes from "./routes/app";
 import logo from "./assets/images/logo.png";
 
 const App = () => {
   return (
-    <div className="app">
+    <div className="App">
       <img id="logo" alt="logo" src={logo} />
       <div className="container">
-        <div className="text-center">
-          <span className="title text-center">ชื่อของคุณ</span>
-        </div>
-        <div className="text-center">
-          <input className="input" type="text"></input>
-        </div>
+        <BrowserRouter>
+          <Switch>
+            {appRoutes.map((prop, key) => {
+              return (
+                <Route
+                  path={prop.path}
+                  component={prop.component}
+                  key={key}
+                  exact
+                />
+              );
+            })}
+          </Switch>
+        </BrowserRouter>
       </div>
     </div>
   );
