@@ -13,13 +13,15 @@ const Join = ({ user, room }) => {
 
   const handleSubmit = () => {
     let isroom = true;
-    room.map((rn) => {
-      if (rn.name === name) {
-        isroom = false;
-        history.push(`/room/${name}`);
-      }
-      return null;
-    });
+    if (name !== "") {
+      room.map((rn) => {
+        if (rn.name === name) {
+          isroom = false;
+          history.push(`/room/${name}`);
+        }
+        return null;
+      });
+    }
     if (isroom) alert("ไม่มีห้องนี้ กรอกใหม่หรือสร้างห้องก่อน");
   };
 
@@ -36,7 +38,7 @@ const Join = ({ user, room }) => {
         <input className="input" type="text" onChange={handleInput}></input>
       </div>
       <div className="text-center pt-1">
-        <Link to={`/options`} style={{ textDecoration: "none" }}>
+        <Link to={`/options`}>
           <input type="button" className="button-2" value="กลับ" />
         </Link>
         <input

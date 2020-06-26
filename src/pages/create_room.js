@@ -2,14 +2,20 @@ import React from "react";
 import { CreateRoom } from "../redux/action";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 const Create = ({ user, room, dispatch }) => {
+  let history = useHistory();
+
   const [name, setName] = React.useState("");
 
   React.useEffect(() => {}, [user]);
 
   const handleSubmit = () => {
-    dispatch(CreateRoom(name));
+    if (name !== "") {
+      dispatch(CreateRoom(name));
+      history.push(`/room/${name}`);
+    } else alert("กรุณาระบุชื่อห้อง");
   };
 
   const handleInput = ({ target }) => {
@@ -22,20 +28,23 @@ const Create = ({ user, room, dispatch }) => {
         <span className="title">สร้างห้องใหม่</span>
       </div>
       <div className="text-center pt-1">
-        <input className="input" type="text" onChange={handleInput}></input>
+        <input
+          className="input"
+          type="text"
+          value={name}
+          onChange={handleInput}
+        ></input>
       </div>
       <div className="text-center pt-1">
-        <Link to={`/options`} style={{ textDecoration: "none" }}>
+        <Link to={`/options`}>
           <input type="button" className="button-2" value="กลับ" />
         </Link>
-        <Link to={`/room/${name}`} style={{ textDecoration: "none" }}>
-          <input
-            type="button"
-            onClick={handleSubmit}
-            className="button-1"
-            value="ยืนยัน"
-          />
-        </Link>
+        <input
+          type="button"
+          onClick={handleSubmit}
+          className="button-1"
+          value="ยืนยัน"
+        />
       </div>
     </div>
   );

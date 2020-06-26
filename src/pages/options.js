@@ -11,16 +11,16 @@ const Options = ({ user }) => {
 
   return (
     <div>
-      <div className="text-center pt-2">
+      <header className="text-center pt-2">
         <span className="title">คุณ {name.username}</span>
-      </div>
+      </header>
       <div className="text-center pt-3">
-        <Link to={`/create`} style={{ textDecoration: "none" }}>
+        <Link to={`/create`}>
           <input type="button" className="button-1" value="สร้างห้องใหม่" />
         </Link>
       </div>
       <div className="text-center">
-        <Link to={`/join`} style={{ textDecoration: "none" }}>
+        <Link to={`/join`}>
           <input type="button" className="button-2" value="เข้าร่วมแชท" />
         </Link>
       </div>

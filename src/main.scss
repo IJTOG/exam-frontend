@@ -16,6 +16,10 @@ body,
   min-height: 100%;
 }
 
+Link {
+  text-decoration: none;
+}
+
 #logo {
   display: block;
   margin: 10px auto 0px auto;
@@ -53,39 +57,52 @@ body,
 
 .container-chat {
   margin: 20px;
-}
-
-.container-chat > .chat {
-  height: 83vh;
-  margin-left: auto;
-  margin-right: auto;
-  background-color: #edeae5;
-  border-radius: 20px;
-  position: relative;
-  animation-name: box;
-  animation-duration: 0.5s;
-}
-
-.box {
-  font-size: 19px;
-  padding: 10px;
-}
-
-.message-box {
-  display: inline-block;
-  margin: 10px;
-  padding: 10px;
-  background-color: lightgray;
-  border-radius: 8px;
-}
-
-.wrapper {
-  position: absolute;
-  margin-left: auto;
-  margin-right: auto;
-  left: 0;
-  right: 0;
-  bottom: 0vh;
+  .chat {
+    height: 83vh;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    animation-name: box;
+    animation-duration: 0.5s;
+    .chat-display {
+      height: 77vh;
+      background-color: #edeae5;
+      border-radius: 20px;
+      overflow: auto;
+    }
+    .chat-right {
+      float: right;
+      clear: both;
+      section {
+        text-align: end;
+      }
+    }
+    .box {
+      font-size: 18px;
+      padding: 10px;
+      .message-box {
+        display: inline-block;
+        margin: 10px;
+        padding: 10px;
+        background-color: lightgray;
+        border-radius: 8px;
+      }
+    }
+    .wrapper {
+      position: absolute;
+      margin-left: auto;
+      margin-right: auto;
+      left: 0;
+      right: 0;
+      bottom: -2.8vh;
+      small {
+        float: right;
+        position: relative;
+        right: 1vh;
+        bottom: 3vh;
+      }
+    }
+  }
 }
 
 .input-chat {
@@ -100,20 +117,6 @@ body,
 
 .input-chat:focus {
   outline: none;
-}
-
-.input-icons {
-  width: 100%;
-}
-
-.input-icons small {
-  position: absolute;
-}
-
-.small {
-  padding-top: 40px;
-  right: 34vh;
-  min-width: 0px;
 }
 
 .title {
@@ -196,26 +199,6 @@ body,
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-@media only screen and (max-width: 767px) {
-  .container {
-    /* The file size of this background image is 93% smaller
-     * to improve page load speed on mobile internet connections */
-    width: 90%;
-  }
-
-  .container-chat > .chat {
-    height: 80vh;
-  }
-
-  .input {
-    width: 80%;
-  }
-
-  .input-chat {
-    width: 96%;
-  }
-}
-
 @keyframes button {
   0% {
     top: 20px;
@@ -237,5 +220,31 @@ body,
     left: 0px;
     top: 0px;
     opacity: 100%;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .container {
+    width: 90%;
+  }
+
+  .container-chat {
+    .chat {
+      height: 80vh;
+      .chat-display {
+        height: 70vh;
+        background-color: #edeae5;
+        border-radius: 20px;
+        overflow: auto;
+      }
+    }
+  }
+
+  .input {
+    width: 80%;
+  }
+
+  .input-chat {
+    width: 96%;
   }
 }
